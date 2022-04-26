@@ -1,12 +1,8 @@
 import React from "react";
-import './Header';
+import "./Header.scss";
 
 const Header = () => {
-  return (
-    <div>To-Do List</div>
-  );
-}
-
-
+  return <div className="h">To-Do List</div>;
+};
 
 export default Header;

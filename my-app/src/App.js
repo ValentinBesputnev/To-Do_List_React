@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import AddTask from "./components/AddTask/AddTask";
-import Header from "./components/Header/Header";
-import List from "./components/List/List";
 import axios from "axios";
+import Header from "./components/Header/Header";
+import AddTask from "./components/AddTask/AddTask";
+import List from "./components/List/List";
+import "./App.scss";
 
-function App() {
-  const [task, setTask] = useState([])
+const App = () => {
+  const [task, setTask] = useState([]);
 
   useEffect(() => {
     fetchFunc();
@@ -18,12 +19,12 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="main">
       <Header />
       <AddTask setTask={setTask} />
       <List task={task} setTask={setTask} />
     </div>
   );
-}
+};
 
 export default App;

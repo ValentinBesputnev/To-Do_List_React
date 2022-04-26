@@ -16,18 +16,25 @@ const AddTask = ({ setTask }) => {
           setText("");
           setTask(res.data.data);
       })
-      : alert("no");
+      : alert("Task must not be empty");
     }
   };
 
   return (
-    <div>
+    <div className="inbut">
       <input
+        className="mainInput"
+        placeholder="Enter a task"
         type="text"
         value={text}
         onChange={(e) => setText(e.target.value)}
       />
-      <button onClick={() => addNewTask()}>Add task</button>
+      <button 
+        className="mainButton" 
+        onClick={ () => addNewTask() }
+      >
+      ADD
+      </button>
     </div>
   );
 };
