@@ -1,12 +1,16 @@
 import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
 import axios from "axios";
+import AllTasksContext from "./context";
+import List from "./components/List/List";
 import Header from "./components/Header/Header";
 import AddTask from "./components/AddTask/AddTask";
-import List from "./components/List/List";
+import EditOneTask from "./components/EditOneTask/EditOneTask";
 import "./App.scss";
 
 const App = () => {
   const [task, setTask] = useState([]);
+  const [editTask, setEditTask] = useState({});
 
   useEffect(() => {
     fetchFunc();
@@ -19,11 +23,23 @@ const App = () => {
   };
 
   return (
-    <div className="main">
-      <Header />
-      <AddTask setTask={setTask} />
-      <List task={task} setTask={setTask} />
-    </div>
+    <AllTasksContext.Provider value={{ task, setTask, editTask, setEditTask }}>
+      <div className="main">
+        <Header />
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <div>
+                <AddTask />
+                <List />
+              </div>
+            }
+          />
+          <Route path="/edit/:id" element={<EditOneTask />} />
+        </Routes>
+      </div>
+    </AllTasksContext.Provider>
   );
 };
 

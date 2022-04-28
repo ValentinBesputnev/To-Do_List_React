@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import AllTasksContext from "../../context";
 import axios from "axios";
 import "./AddTask.scss";
 
-const AddTask = ({ setTask }) => {
+const AddTask = () => {
+  const { setTask } = useContext(AllTasksContext);
   const [text, setText] = useState("");
 
   const addNewTask = async () => {
